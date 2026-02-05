@@ -1,0 +1,3 @@
+export { Logo } from "./logo";
+export { Footer } from "./footer";
+export { Header } from "./header";
