@@ -1,0 +1,104 @@
+{
+  "common": {
+    "appName": "Sovereign Revoke",
+    "tagline": "保护你的 Web3 资产",
+    "dashboard": "控制台",
+    "home": "首页",
+    "loading": "加载中...",
+    "error": "错误",
+    "tryAgain": "重试",
+    "refresh": "刷新"
+  },
+  "landing": {
+    "hero": {
+      "title": "保护你的 Web3 资产",
+      "subtitle": "扫描并撤销代币授权，保护你的钱包免受潜在攻击。免费、隐私、开源。",
+      "cta": "启动应用",
+      "learnMore": "了解更多"
+    },
+    "features": {
+      "title": "为什么选择 Sovereign Revoke？",
+      "scan": {
+        "title": "扫描授权",
+        "description": "即时查看你钱包在多条链上授予的所有代币授权。"
+      },
+      "risk": {
+        "title": "风险评估",
+        "description": "自动风险评分帮助你识别危险的无限授权。"
+      },
+      "revoke": {
+        "title": "一键撤销",
+        "description": "只需一笔交易即可撤销任何授权。夺回你资产的控制权。"
+      },
+      "privacy": {
+        "title": "隐私优先",
+        "description": "无需登录，无数据库，零数据收集。你的钱包，你的隐私。"
+      },
+      "free": {
+        "title": "永久免费",
+        "description": "无费用，无高级版。安全应该人人可及。"
+      },
+      "multichain": {
+        "title": "多链支持",
+        "description": "支持以太坊、Polygon、Arbitrum、Optimism、Base 等多条链。"
+      }
+    },
+    "cta": {
+      "title": "准备好保护你的钱包了吗？",
+      "subtitle": "连接钱包，开始扫描风险授权。",
+      "button": "开始使用"
+    }
+  },
+  "dashboard": {
+    "connectWallet": {
+      "title": "连接钱包",
+      "description": "连接你的钱包以扫描代币授权，保护你的资产免受潜在攻击。"
+    },
+    "stats": {
+      "totalApprovals": "总授权数",
+      "totalApprovalsDesc": "发现的活跃代币授权",
+      "highRisk": "高风险",
+      "highRiskDesc": "需要撤销的无限授权",
+      "wallet": "钱包",
+      "walletDesc": "已连接的钱包"
+    },
+    "approvals": {
+      "title": "代币授权",
+      "description": "审查并撤销代币授权以保护你的钱包",
+      "demoMode": "演示模式",
+      "liveData": "实时数据"
+    },
+    "demoBanner": {
+      "title": "演示模式",
+      "description": "未配置 GoldRush API 密钥。正在显示模拟授权数据用于演示。请在 goldrush.dev 获取免费 API 密钥并添加到 .env.local。"
+    },
+    "table": {
+      "token": "代币",
+      "spender": "授权对象",
+      "allowance": "授权额度",
+      "risk": "风险",
+      "action": "操作",
+      "unlimited": "无限",
+      "revoke": "撤销",
+      "revoking": "撤销中...",
+      "noApprovals": "未发现授权",
+      "noApprovalsDesc": "好消息！你的钱包没有活跃的代币授权。",
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "error": {
+      "title": "加载授权失败"
+    }
+  },
+  "footer": {
+    "description": "一个免费、隐私优先的代币授权管理工具。",
+    "builtWith": "用",
+    "by": "构建",
+    "links": {
+      "github": "GitHub",
+      "docs": "文档",
+      "twitter": "Twitter"
+    }
+  }
+}

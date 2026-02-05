@@ -1,22 +1,17 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Logo } from "@/components/shared/logo";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
-import { AlertTriangle, ArrowRight, CheckCircle, Lock, Shield, Zap } from "lucide-react";
+import { AlertTriangle, ArrowRight, CheckCircle, Shield, Eye, Ban, Globe } from "lucide-react";
 
 export default function LandingPage() {
+  const t = useTranslations();
+
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Logo />
-          <Link href="/dashboard">
-            <Button>Launch App</Button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero */}
       <section className="container flex flex-1 flex-col items-center justify-center gap-8 py-20 text-center md:py-32">
@@ -26,26 +21,23 @@ export default function LandingPage() {
         </div>
 
         <h1 className="max-w-4xl text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          Unlimited Approvals are a
-          <span className="text-red-500"> Silent Threat</span>
+          {t("landing.hero.title")}
         </h1>
 
         <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          Every time you interact with a DeFi protocol, you grant token approvals. 
-          Many are set to &ldquo;unlimited&rdquo; by default. If that contract gets exploited, 
-          hackers can drain your entire balance.
+          {t("landing.hero.subtitle")}
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row">
           <Link href="/dashboard">
             <Button size="lg" className="gap-2">
-              Scan My Wallet
+              {t("landing.hero.cta")}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
-          <Link href="#how-it-works">
+          <Link href="#features">
             <Button size="lg" variant="outline">
-              Learn More
+              {t("landing.hero.learnMore")}
             </Button>
           </Link>
         </div>
@@ -67,110 +59,22 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="border-t bg-muted/30 py-20">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              How It Works
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Three simple steps to secure your assets
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            <Card className="border-none bg-transparent">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <span className="text-xl font-bold">1</span>
-                </div>
-                <CardTitle>Connect Wallet</CardTitle>
-                <CardDescription>
-                  Connect your wallet securely using WalletConnect or MetaMask.
-                  We never have access to your private keys.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-none bg-transparent">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <span className="text-xl font-bold">2</span>
-                </div>
-                <CardTitle>Review Approvals</CardTitle>
-                <CardDescription>
-                  We scan your wallet and show all active token approvals,
-                  highlighting high-risk unlimited allowances.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-none bg-transparent">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <span className="text-xl font-bold">3</span>
-                </div>
-                <CardTitle>Revoke with One Click</CardTitle>
-                <CardDescription>
-                  Revoke unnecessary approvals instantly. A single transaction
-                  removes the risk from your wallet.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Features */}
-      <section className="py-20">
+      <section id="features" className="border-t bg-muted/30 py-20">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Why Sovereign Revoke?
+              {t("landing.features.title")}
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Built by security researchers, for the Web3 community
-            </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardHeader>
-                <Shield className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Privacy First</CardTitle>
+                <Eye className="mb-2 h-8 w-8 text-primary" />
+                <CardTitle>{t("landing.features.scan.title")}</CardTitle>
                 <CardDescription>
-                  No tracking, no data collection. Your wallet activity stays private.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Lock className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Non-Custodial</CardTitle>
-                <CardDescription>
-                  We never touch your funds. All transactions are signed by you.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Zap className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Multi-Chain</CardTitle>
-                <CardDescription>
-                  Support for Ethereum, Polygon, Arbitrum, Optimism, and more.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CheckCircle className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Risk Analysis</CardTitle>
-                <CardDescription>
-                  Automatic risk scoring based on approval amount and contract reputation.
+                  {t("landing.features.scan.description")}
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -178,22 +82,49 @@ export default function LandingPage() {
             <Card>
               <CardHeader>
                 <AlertTriangle className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Real-Time Alerts</CardTitle>
+                <CardTitle>{t("landing.features.risk.title")}</CardTitle>
                 <CardDescription>
-                  Get notified when new approvals are detected. (Pro feature)
+                  {t("landing.features.risk.description")}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <span className="text-xs text-muted-foreground">Coming Soon</span>
-              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Ban className="mb-2 h-8 w-8 text-primary" />
+                <CardTitle>{t("landing.features.revoke.title")}</CardTitle>
+                <CardDescription>
+                  {t("landing.features.revoke.description")}
+                </CardDescription>
+              </CardHeader>
             </Card>
 
             <Card>
               <CardHeader>
                 <Shield className="mb-2 h-8 w-8 text-primary" />
-                <CardTitle>Open Source</CardTitle>
+                <CardTitle>{t("landing.features.privacy.title")}</CardTitle>
                 <CardDescription>
-                  Fully transparent. Audit our code on GitHub anytime.
+                  {t("landing.features.privacy.description")}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CheckCircle className="mb-2 h-8 w-8 text-primary" />
+                <CardTitle>{t("landing.features.free.title")}</CardTitle>
+                <CardDescription>
+                  {t("landing.features.free.description")}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Globe className="mb-2 h-8 w-8 text-primary" />
+                <CardTitle>{t("landing.features.multichain.title")}</CardTitle>
+                <CardDescription>
+                  {t("landing.features.multichain.description")}
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -202,17 +133,17 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t bg-muted/30 py-20">
+      <section className="py-20">
         <div className="container text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Protect Your Assets Today
+            {t("landing.cta.title")}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            It takes less than a minute to scan and secure your wallet.
+            {t("landing.cta.subtitle")}
           </p>
           <Link href="/dashboard" className="mt-8 inline-block">
             <Button size="lg" className="gap-2">
-              Launch App
+              {t("landing.cta.button")}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

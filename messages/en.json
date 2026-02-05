@@ -1,0 +1,104 @@
+{
+  "common": {
+    "appName": "Sovereign Revoke",
+    "tagline": "Protect Your Web3 Assets",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again",
+    "refresh": "Refresh"
+  },
+  "landing": {
+    "hero": {
+      "title": "Protect Your Web3 Assets",
+      "subtitle": "Scan and revoke token approvals to secure your wallet from potential exploits. Free, private, and open source.",
+      "cta": "Launch App",
+      "learnMore": "Learn More"
+    },
+    "features": {
+      "title": "Why Sovereign Revoke?",
+      "scan": {
+        "title": "Scan Approvals",
+        "description": "Instantly view all token approvals granted by your wallet across multiple chains."
+      },
+      "risk": {
+        "title": "Risk Assessment",
+        "description": "Automatic risk scoring helps you identify dangerous unlimited approvals."
+      },
+      "revoke": {
+        "title": "One-Click Revoke",
+        "description": "Revoke any approval with a single transaction. Take back control of your assets."
+      },
+      "privacy": {
+        "title": "Privacy First",
+        "description": "No login, no database, zero data collection. Your wallet, your privacy."
+      },
+      "free": {
+        "title": "Free Forever",
+        "description": "No fees, no premium tiers. Security should be accessible to everyone."
+      },
+      "multichain": {
+        "title": "Multi-Chain",
+        "description": "Support for Ethereum, Polygon, Arbitrum, Optimism, Base, and more."
+      }
+    },
+    "cta": {
+      "title": "Ready to Secure Your Wallet?",
+      "subtitle": "Connect your wallet and start scanning for risky approvals.",
+      "button": "Get Started"
+    }
+  },
+  "dashboard": {
+    "connectWallet": {
+      "title": "Connect Your Wallet",
+      "description": "Connect your wallet to scan for token approvals and protect your assets from potential exploits."
+    },
+    "stats": {
+      "totalApprovals": "Total Approvals",
+      "totalApprovalsDesc": "Active token approvals found",
+      "highRisk": "High Risk",
+      "highRiskDesc": "Unlimited approvals to revoke",
+      "wallet": "Wallet",
+      "walletDesc": "Connected wallet"
+    },
+    "approvals": {
+      "title": "Token Approvals",
+      "description": "Review and revoke token approvals to secure your wallet",
+      "demoMode": "Demo Mode",
+      "liveData": "Live Data"
+    },
+    "demoBanner": {
+      "title": "Demo Mode",
+      "description": "GoldRush API key not configured. Showing simulated approval data for demonstration. Get your free API key at goldrush.dev and add it to .env.local."
+    },
+    "table": {
+      "token": "Token",
+      "spender": "Spender",
+      "allowance": "Allowance",
+      "risk": "Risk",
+      "action": "Action",
+      "unlimited": "Unlimited",
+      "revoke": "Revoke",
+      "revoking": "Revoking...",
+      "noApprovals": "No Approvals Found",
+      "noApprovalsDesc": "Great news! Your wallet has no active token approvals.",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "error": {
+      "title": "Error Loading Approvals"
+    }
+  },
+  "footer": {
+    "description": "A free, privacy-first tool for managing token approvals.",
+    "builtWith": "Built with",
+    "by": "by",
+    "links": {
+      "github": "GitHub",
+      "docs": "Docs",
+      "twitter": "Twitter"
+    }
+  }
+}

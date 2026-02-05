@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -28,6 +29,7 @@ interface ApprovalTableProps {
 }
 
 export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
+  const t = useTranslations();
   const [revokingId, setRevokingId] = useState<string | null>(null);
   const { revoke, isPending, isConfirming } = useRevokeApproval({
     onSuccess: () => {
@@ -54,9 +56,9 @@ export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <CheckCircle className="mb-4 h-12 w-12 text-green-500" />
-        <h3 className="text-lg font-semibold">No Approvals Found</h3>
+        <h3 className="text-lg font-semibold">{t("dashboard.table.noApprovals")}</h3>
         <p className="text-muted-foreground">
-          Your wallet has no active token approvals. You&apos;re safe!
+          {t("dashboard.table.noApprovalsDesc")}
         </p>
       </div>
     );
@@ -68,11 +70,11 @@ export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Asset</TableHead>
-              <TableHead>Spender</TableHead>
-              <TableHead>Allowance</TableHead>
-              <TableHead>Risk</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+              <TableHead>{t("dashboard.table.token")}</TableHead>
+              <TableHead>{t("dashboard.table.spender")}</TableHead>
+              <TableHead>{t("dashboard.table.allowance")}</TableHead>
+              <TableHead>{t("dashboard.table.risk")}</TableHead>
+              <TableHead className="text-right">{t("dashboard.table.action")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -123,7 +125,7 @@ export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
                   {approval.isUnlimited ? (
                     <span className="flex items-center gap-1 text-red-500">
                       <AlertTriangle className="h-4 w-4" />
-                      Unlimited
+                      {t("dashboard.table.unlimited")}
                     </span>
                   ) : (
                     <span>
@@ -134,8 +136,7 @@ export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
                 </TableCell>
                 <TableCell>
                   <Badge variant={riskColors[approval.riskLevel]}>
-                    {approval.riskLevel.charAt(0).toUpperCase() +
-                      approval.riskLevel.slice(1)}
+                    {t(`dashboard.table.${approval.riskLevel}`)}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right">
@@ -148,10 +149,10 @@ export function ApprovalTable({ approvals, onRevoked }: ApprovalTableProps) {
                     {revokingId === approval.id && (isPending || isConfirming) ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        {isPending ? "Confirm..." : "Revoking..."}
+                        {t("dashboard.table.revoking")}
                       </>
                     ) : (
-                      "Revoke"
+                      t("dashboard.table.revoke")
                     )}
                   </Button>
                 </TableCell>

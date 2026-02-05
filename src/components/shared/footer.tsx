@@ -1,26 +1,31 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Logo } from "./logo";
 import { Github, Twitter } from "lucide-react";
 
 export function Footer() {
+  const t = useTranslations();
+
   return (
     <footer className="border-t bg-background">
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <Logo />
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            Secure your assets. Revoke token approvals.
+            {t("footer.description")}
           </p>
         </div>
         <div className="flex items-center gap-4">
           <Link
-            href="https://github.com/svgn"
+            href="https://github.com/wangyuanchen/sovereign-revoke"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground"
           >
             <Github className="h-5 w-5" />
-            <span className="sr-only">GitHub</span>
+            <span className="sr-only">{t("footer.links.github")}</span>
           </Link>
           <Link
             href="https://twitter.com/svgn"
@@ -29,7 +34,7 @@ export function Footer() {
             className="text-muted-foreground hover:text-foreground"
           >
             <Twitter className="h-5 w-5" />
-            <span className="sr-only">Twitter</span>
+            <span className="sr-only">{t("footer.links.twitter")}</span>
           </Link>
         </div>
       </div>

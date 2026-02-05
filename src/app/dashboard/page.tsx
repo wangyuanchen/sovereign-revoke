@@ -1,6 +1,7 @@
 "use client";
 
 import { useAccount } from "wagmi";
+import { useTranslations } from "next-intl";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { ApprovalTable } from "@/components/web3/approval-table";
@@ -12,6 +13,7 @@ import { AlertTriangle, Loader2, RefreshCw, Shield, Wallet } from "lucide-react"
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function DashboardPage() {
+  const t = useTranslations();
   const { isConnected, address } = useAccount();
   const { approvals, isLoading, error, isUsingMockData, refetch, removeApproval } = useApprovals();
 
@@ -29,9 +31,9 @@ export default function DashboardPage() {
             <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
               <Wallet className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h1 className="text-3xl font-bold tracking-tight">Connect Your Wallet</h1>
+            <h1 className="text-3xl font-bold tracking-tight">{t("dashboard.connectWallet.title")}</h1>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Connect your wallet to scan for token approvals and protect your assets from potential exploits.
+              {t("dashboard.connectWallet.description")}
             </p>
             <div className="mt-8">
               <ConnectButton />
@@ -44,40 +46,40 @@ export default function DashboardPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Approvals</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t("dashboard.stats.totalApprovals")}</CardTitle>
                   <Shield className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{totalApprovals}</div>
                   <p className="text-xs text-muted-foreground">
-                    Active token approvals found
+                    {t("dashboard.stats.totalApprovalsDesc")}
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">High Risk</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t("dashboard.stats.highRisk")}</CardTitle>
                   <AlertTriangle className="h-4 w-4 text-red-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-red-500">{highRiskCount}</div>
                   <p className="text-xs text-muted-foreground">
-                    Unlimited approvals to revoke
+                    {t("dashboard.stats.highRiskDesc")}
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Wallet</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t("dashboard.stats.wallet")}</CardTitle>
                   <Wallet className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-sm font-mono">
                     {address?.slice(0, 6)}...{address?.slice(-4)}
                   </div>
-                  <p className="text-xs text-muted-foreground">Connected wallet</p>
+                  <p className="text-xs text-muted-foreground">{t("dashboard.stats.walletDesc")}</p>
                 </CardContent>
               </Card>
             </div>
@@ -87,19 +89,19 @@ export default function DashboardPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle>Token Approvals</CardTitle>
+                    <CardTitle>{t("dashboard.approvals.title")}</CardTitle>
                     <CardDescription>
-                      Review and revoke token approvals to secure your wallet
+                      {t("dashboard.approvals.description")}
                     </CardDescription>
                   </div>
                   <div className="flex items-center gap-2">
                     {isUsingMockData ? (
                       <Badge variant="outline" className="hidden sm:inline-flex text-yellow-500 border-yellow-500/50">
-                        Demo Mode
+                        {t("dashboard.approvals.demoMode")}
                       </Badge>
                     ) : (
                       <Badge variant="outline" className="hidden sm:inline-flex text-green-500 border-green-500/50">
-                        Live Data
+                        {t("dashboard.approvals.liveData")}
                       </Badge>
                     )}
                     <Button
@@ -113,7 +115,7 @@ export default function DashboardPage() {
                       ) : (
                         <RefreshCw className="h-4 w-4" />
                       )}
-                      <span className="ml-2 hidden sm:inline">Refresh</span>
+                      <span className="ml-2 hidden sm:inline">{t("common.refresh")}</span>
                     </Button>
                   </div>
                 </div>
@@ -126,10 +128,10 @@ export default function DashboardPage() {
                 ) : error ? (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
                     <AlertTriangle className="mb-4 h-12 w-12 text-red-500" />
-                    <h3 className="text-lg font-semibold">Error Loading Approvals</h3>
+                    <h3 className="text-lg font-semibold">{t("dashboard.error.title")}</h3>
                     <p className="text-muted-foreground">{error}</p>
                     <Button variant="outline" className="mt-4" onClick={refetch}>
-                      Try Again
+                      {t("common.tryAgain")}
                     </Button>
                   </div>
                 ) : (
@@ -145,10 +147,9 @@ export default function DashboardPage() {
                   <div className="flex items-start gap-4">
                     <AlertTriangle className="h-6 w-6 text-yellow-500 shrink-0" />
                     <div>
-                      <CardTitle className="text-base">Demo Mode</CardTitle>
+                      <CardTitle className="text-base">{t("dashboard.demoBanner.title")}</CardTitle>
                       <CardDescription>
-                        Covalent API key not configured. Showing simulated approval data for demonstration.
-                        Get your free API key at goldrush.dev and add it to .env.local.
+                        {t("dashboard.demoBanner.description")}
                       </CardDescription>
                     </div>
                   </div>

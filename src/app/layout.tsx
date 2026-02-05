@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { Web3Provider } from "@/providers/web3-provider";
 import "./globals.css";
 
@@ -27,15 +29,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="dark">
+    <html lang={locale} className="dark">
       <body className={inter.className}>
-        <Web3Provider>{children}</Web3Provider>
+        <NextIntlClientProvider messages={messages}>
+          <Web3Provider>{children}</Web3Provider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
