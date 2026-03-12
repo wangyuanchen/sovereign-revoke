@@ -33,7 +33,7 @@
 
 ```bash
 # Clone
-git clone https://github.com/AceDZN/svgn-revoke.git
+git clone https://github.com/wangyuanchen/sovereign-revoke.git
 cd svgn-revoke
 
 # Install
