@@ -1,12 +1,24 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
 import { mainnet, sepolia, polygon, arbitrum, optimism, base } from "wagmi/chains";
 
 // RainbowKit/Wagmi configuration
 // Get your Project ID from https://dashboard.reown.com/
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "YOUR_PROJECT_ID";
+const chains = [mainnet, sepolia, polygon, arbitrum, optimism, base] as const;
+
 export const config = getDefaultConfig({
   appName: "Sovereign Revoke",
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "YOUR_PROJECT_ID",
-  chains: [mainnet, sepolia, polygon, arbitrum, optimism, base],
+  projectId,
+  chains,
+  wallets: [
+    {
+      groupName: "Recommended",
+      wallets: [metaMaskWallet],
+    },
+  ],
+  // Only enable MetaMask for now to avoid unsupported wallet authorization errors.
+  // We can re-enable more wallets later after compatibility testing.
   ssr: true,
 });
 
