@@ -3,6 +3,11 @@
 🛡️ **Free, privacy-first token approval manager. Scan & revoke risky approvals to protect your Web3 assets.**
 
 [![Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1089632&theme=light&t=1773305952077)](https://www.producthunt.com/products/sovereign-revoke?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-sovereign-revoke)
+
+<a href="https://peerpush.net/p/sovereign-revoke" target="_blank" rel="noopener noreferrer">
+  <img src="https://peerpush.net/p/sovereign-revoke/badge.png" alt="Sovereign Revoke badge" width="230" />
+</a>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5+-blue)](https://www.typescriptlang.org/)
